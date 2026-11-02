@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A2E6E">
+<title>Dashboard Pelatihan Masyarakat Kelautan dan Perikanan</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%9F%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="ld"><div><div class="spin" id="ldspin"></div><p id="ldt">Memuat data dari Google Sheets…<br><small>Pemuatan pertama dapat memakan waktu hingga 30 detik.</small></p><button id="ldretry" hidden>Coba lagi</button></div></div>
+
+<header id="hdr">
+  <div class="ht"><h1>Dashboard Pelatihan Masyarakat Kelautan dan Perikanan</h1><p id="hp"></p></div>
+  <button id="rf" class="ghost" title="Ambil data terbaru">⟳ Muat ulang</button>
+</header>
+
+<main>
+<details class="filters" id="flt" open>
+  <summary>🔎 Filter data</summary>
+  <div class="fg">
+    <label>Tahun<select id="fT"></select></label>
+    <label>Bulan<select id="fM"></select></label>
+    <label>Penyelenggara<select id="fB"></select></label>
+    <label>Metode pelatihan<select id="fJ"></select></label>
+    <label>Skema pelatihan<select id="fS"></select></label>
+    <label>Program terobosan<select id="fR"></select></label>
+    <label>Bidang usaha<select id="fD"></select></label>
+    <label>Domisili peserta<select id="fN"></select></label>
+  </div>
+  <div class="fa"><span class="chip" id="chip" title="Klik untuk hapus filter provinsi"></span><button id="rst">Reset filter</button></div>
+</details>
+
+<div class="dn" id="dnln"></div>
+<div class="kpis" id="kpis"></div>
+
+<div class="grid">
+  <section class="card c4"><h2>Jumlah pelatihan per tahun <i>(klik batang untuk memfilter)</i></h2><div class="cv"><canvas id="cY"></canvas></div></section>
+  <section class="card c8"><h2>Tren pelatihan per bulan</h2><div class="cv"><canvas id="cM"></canvas></div></section>
+</div>
+<div class="grid">
+  <section class="card c7"><h2>Sebaran pelatihan per provinsi <i>(jumlah peserta · klik batang untuk memfilter)</i></h2><div class="cv tall"><canvas id="cP"></canvas></div></section>
+  <div class="c5 stack">
+    <section class="card"><h2>Bidang usaha</h2><div class="cv sm"><canvas id="cD"></canvas></div></section>
+    <section class="card"><h2>Peserta per penyelenggara</h2><div class="cv sm"><canvas id="cB"></canvas></div></section>
+  </div>
+</div>
+
+<section class="card">
+  <h2>Daftar pelatihan: nama, lokasi, dan jumlah peserta <i>(klik jumlah peserta untuk melihat daftar peserta)</i></h2>
+  <input id="q" class="search" placeholder="Cari nama pelatihan, kab/kota, atau provinsi…">
+  <div class="tw"><table class="rt"><thead><tr><th>No</th><th>Nama pelatihan</th><th>Penyelenggara</th><th>Lokasi (kab/kota, provinsi)</th><th>Waktu</th><th style="text-align:right">Peserta</th></tr></thead><tbody id="tb"></tbody></table></div>
+  <div class="note" id="tn"></div>
+</section>
+<p class="note">Catatan: satu “pelatihan” = kombinasi unik nama pelatihan + penyelenggara + bulan pelaksanaan. Lokasi adalah kab/kota domisili peserta terbanyak. Data bersumber dari Formulir 2 – Data Pendukung Capaian IKU yang disimpan di Google Sheets. * Tahun berjalan dapat belum mencakup data setahun penuh.</p>
+</main>
+<footer id="ver"></footer>
+
+<div class="md" id="md" hidden>
+  <div class="mb" role="dialog" aria-modal="true" aria-labelledby="mht">
+    <div class="mh"><div><h3 id="mht"></h3><small id="mhs"></small></div><button class="mx" id="mx" aria-label="Tutup">✕</button></div>
+    <div class="ms" id="ms"></div>
+    <div class="mt">
+      <div id="mauth" hidden class="auth"><input id="mtok" type="password" placeholder="Token / kata sandi" autocomplete="off"><button id="mgo">Buka daftar peserta</button></div>
+      <input id="mq" class="search" placeholder="Cari nama, kab/kota, atau provinsi…">
+      <div class="tw mw"><table><thead><tr id="mth"></tr></thead><tbody id="mtb"></tbody></table></div>
+      <div class="note" id="mtn"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
